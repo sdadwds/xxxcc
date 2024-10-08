@@ -250,7 +250,7 @@ Q.PageInfo.sample = "";;
     </div>
 </div>
 
-          #set($pwdholder = "请输入密1")
+          #set($pwdholder = "请输入密码1")
           <div class="largest" glue-component="page.userOpt.component.password">
         <div class="inner_bottom" glue-show="passwordTip==0" style="display: none;">$!{pwdholder}</div>
         <div class="inner_bottom error-top" data-node="passwordError"  glue-show="passwordTip==1" style="display: none;"><i></i></div>
@@ -634,7 +634,7 @@ Q.PageInfo.sample = "";;
       <div class="input_wrap_new detial-info">
           <input class="input-block-new enterNumber" data-node="smsCode" placeholder="请输入验证码" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
           <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span>
-          <span  class="access-ver-code access-ver-code-opacity" data-node="checkuser" data-type="checkuser" data-rseat="login_btn" data-rpage="phone_login1">获取验证1</span>
+          <span  class="access-ver-code access-ver-code-opacity" data-node="checkuser" data-type="checkuser" data-rseat="login_btn" data-rpage="phone_login1">获取验证码1</span>
           <!-- <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span> -->
       </div>
     </div>
