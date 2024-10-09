@@ -297,26 +297,39 @@ Q.PageInfo.sample = "";;
     
 </div>
   
-
+</div>
+          <div class="btnWrap" glue-show="showMiRouterBtn==0" style="display:none">
+              <a data-node="miRouter" href="javascript:void(0)" class="c-btn-block c-btn-base xiaomi"><i
+                      class="c-icon-mi"></i>小米账号登录</a>
+          </div>
+          <div class="m-box" style="display:none;"
+    glue-component="page.userOpt.component.form.slideVerifyNew">
+    <div class="m-box-items m-box-items-full cover">
+        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
+        <div class="m-popup popup-yzm">
+        <div id="slide" class="m-yzm-code-wrap"></div>
+        </div>
+    </div>
+</div>
 
           <div class="m-loginWay-new selected" glue-show="otherLoginShow==1">
             <a class="account" href="javascript:void(0)" data-node="smsLogin" data-rseat="signup_btn"
               data-rpage="password_login">短信登录1</a>
               #set($logintype = 'baseLogin')
               <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
-
+  <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
   <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
   <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
   <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
 </div>
 
             <!-- <div class="thirdIcon">
-            
+              <img class="otherWay weixinClass" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
               <img class="otherWay QQClass" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
               <img class="otherWay weiboClass" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
               <img class="otherWay baiduClass" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
             </div> -->
-           
+            <!-- <a class="otherWay weixinClass" href="javascript:void(0)" data-node="openWeixin" data-rseat="other_login_type" data-rpage="phone_login1"></a>
             <a class="otherWay QQClass" href="javascript:void(0)" data-node="openQQ" data-rseat="other_login_type" data-rpage="phone_login1"></a>
             <a class="otherWay baiduClass" href="javascript:void(0)" data-node="openBaidu" data-rseat="other_login_type" data-rpage="phone_login1"></a>
             <a class="otherWay weiboClass" href="javascript:void(0)" data-node="openWeibo" data-rseat="other_login_type" data-rpage="phone_login1"></a> -->
@@ -327,7 +340,9 @@ Q.PageInfo.sample = "";;
       </div>
     
     </div>
-    
+    <!-- 登录信息 -->
+  
+    <!-- 登录信息 end-->
 </div>
 
         
@@ -395,7 +410,7 @@ Q.PageInfo.sample = "";;
     <!-- <div class="m-tips-link" glue-show="showBtn == 0" style="display:none">
       <div glue-component="page.userOpt.component.sendSmsCodeBtn" glue-id="viewId"></div>
       <a class="c-btn-block c-btn-base " href="javascript:void(0);" data-node="checkuser" data-rseat="login_btn"
-        data-rpage="phone_login1">获取短信验证码1</a>
+        data-rpage="phone_login1">获取短信验证码</a>
     </div> -->
     <div class="m-box" style="display:none;"
     glue-component="page.userOpt.component.form.slideVerifyNew">
@@ -413,24 +428,32 @@ Q.PageInfo.sample = "";;
         data-rpage="phone_login1">密码登录1</a>
         #set($logintype = 'smsLogin')
         <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
- 
+  <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
   <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
   <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
   <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
 </div>
 
       <!-- <div class="thirdIcon">
-        
+        <img class="otherWay weixinClass" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
         <img class="otherWay QQClass" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
         <img class="otherWay weiboClass" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
         <img class="otherWay baiduClass" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
       </div> -->
-     
+      <!-- <a class="otherWay weixinClass" href="javascript:void(0)" data-node="openWeixin" data-rseat="other_login_type" data-rpage="phone_login1"></a>
       <a class="otherWay QQClass" href="javascript:void(0)" data-node="openQQ" data-rseat="other_login_type" data-rpage="phone_login1"></a>
       <a class="otherWay baiduClass" href="javascript:void(0)" data-node="openBaidu" data-rseat="other_login_type" data-rpage="phone_login1"></a>
       <a class="otherWay weiboClass" href="javascript:void(0)" data-node="openWeibo" data-rseat="other_login_type" data-rpage="phone_login1"></a> -->
     </div>
-    
+    <!-- <div class="m-loginGoApp" glue-show="hiddenAppShow!=1" data-component="page.userOpt.component.baseLogin"
+      data-node="goToAppBtn"
+      style="width: 100%;background-image: linear-gradient(45deg, rgb(50, 204, 255, 0.08) 0%, rgb(0, 225, 56, 0.08) 51%, rgb(0, 225, 56, 0.08) 100%);">
+      <img class="loginGoApp-logoImg" src="http://pic2.iqiyipic.com/lequ/20220623/72326d33cafc4224841d8001d244b9e4.png"
+        alt="">
+      <span class="loginGoApp-title">前往爱奇艺APP继续登录</span>
+      <img class="loginGoApp-arrow" src="http://pic3.iqiyipic.com/lequ/20220623/392378ce23c244a797824e652167cf7c.png"
+        alt="">
+    </div> -->
   </section>
 </div>
  
@@ -521,7 +544,25 @@ Q.PageInfo.sample = "";;
  
     
 
-  
+  <div class="weixin-allbtn" data-component="page.userOpt.component.weixinOpt">
+    <div class="weixin-login" data-node="weixinBtn">
+      <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt="">
+      <span>微信一键登录</span>  
+    </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
+  </div>
+</div>
+ 
+     
+</div>
+<!-- 用户协议和隐私政策 end -->
+
+  <div class="weixin-allbtn" data-component="page.userOpt.component.quickLogin">
+    <div class="weixin-login" data-node="quickLogin">
+      <!-- <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt=""> -->
+      <span>爱奇艺APP一键登录</span>  
+    </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
   </div>
 </div>
  
