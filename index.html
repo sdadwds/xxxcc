@@ -457,58 +457,7 @@ Q.PageInfo.sample = "";;
   </section>
 </div>
  
-        </script>
-    <script glue-node="sendCodeSMS" type="text/velocity">
-             <div class="m-pc-title">
-    <h3 class="title" glue-component="page.userOpt.component.title">发送验证码短信</h3>
-</div>
-<section class="m-loginNew" glue-component="page.userOpt.component.upSmsLogin" glue-id="rootViewId">
-    #set($rseat='h5upsmslgnvph_eph')
-    #set($areaCase = '1')
-    <div class="m-arrdess" glue-component="page.userOpt.component.showPhone"  data-case="$!{areaCase}">
-    <span class="choose-add" data-node="areaName"></span>
-    <div class="phone-num" data-node="phoneNumberShow"></div>
-    <a href="javascript:void(0);" class="link-alter" data-node="changePhone">修改</a>
-</div>
-
-    #set($rseatsmsbtn='h5upsmslgnvph_smsbtn')
-    #set($rseatvphbtn='h5upsmslgnvph_vphbtn')
-    #set($rseattmoutfrsh='h5upsmslgnvph_tmoutfrsh')
-    #set($rseatrfrsh='h5upsmslgnvph_rfrsh')
-    <div glue-id="viewId" data-component="page.userOpt.component.sendSMSCode" glue-id="rootViewId">
-    <div class="m-setMessage"  glue-show="tipShow == 1" style="display: none;">
-        <div class="edit-message">
-        <span class="message-title">请编辑短信</span>
-        <span class="message-txt" data-node="smsBody"></span>
-        </div>
-        <div class="send-message">
-        <span class="message-title">请发送号码</span>
-        <span class="message-txt" data-node="smsNumber"></span>
-        </div>
-    </div>
-    <div class="btnWrap btnWrap-top"  glue-show="smsBtnShow == 1" style="display: none;">
-        <a class="c-btn-block c-btn-base " data-node="sendMsg" href="javascript:void(0);" data-rseat="$!{rseatsmsbtn}">用本机发送短信</a>
-        <a class="c-btn-block c-btn-base selected" href="javascript:void(0);" data-node="sendedSmsCodeBtn" data-rseat="$!{rseatvphbtn}">已经发送了</a>
-    </div>
-
-    <div class="lost-message"  glue-show="tipShow == 2" style="display: none;">
-        <h3 class="lost-title">我们没能收到您的短信</h3>
-        <p class="lost-reason">大部分情况下这和手机信号强弱有关<br>您可以找个信号更好的地方尝试 <a class="re-send" href="javascript:void(0);" data-node="resendBtn" data-rseat="$!{rseattmoutfrsh}">重新发送</a></p>
-    </div>
-
-    <a class="timeout-refresh" href="javascript:void(0);" glue-show="tipShow == 3" style="display: none;">
-        <i class="c-glyphicon c-glyphicon-HSrefresh"></i>已超时，请刷新
-    </a>
-
-    <div class="btnWrap" glue-show="tipShow == 3" style="display: none;">
-        <a class="c-btn-block c-btn-base " href="javascript:void(0);" data-node="reflashBtn" data-rseat="$!{rseatrfrsh}">刷新</a>
-    </div>
-
-    <div class="receive-message" data-node="processPanel" glue-show="processShow == 1" style="display: none;">
-        <p class="receive-txt ">正在接收您的短信请稍后。。。</p>
-        <div class="loading-process">
-        <div class="loading-load" data-node="processData"></div>
-        </div>
+        
     </div>
 </div>
 
@@ -516,124 +465,10 @@ Q.PageInfo.sample = "";;
  
         </script>
 
-    <script glue-node="registered" type="text/velocity">
-             <!-- title -->
-<div class="m-pc-title">
-<h3 class="title" glue-component="page.userOpt.component.title">输入验证码</h3>
-</div>
-<!-- title end -->
-<!-- 已经注册封面图 -->
-<section class="m-pc-alreadyReg">
-<i class="alreadyReg"></i>
-<p class="alreadyReg-txt">发现您曾经注册过爱奇艺账号<br>为您登录中...</p>
-</section>
-<!-- 已经注册封面图 end --> 
-        </script>
-
-    <script glue-node="unregister" type="text/velocity">
-             <div class="m-pc-title">
-    <h3 class="title" glue-component="page.userOpt.component.title">手机号未注册</h3>
-</div>
-<section class="m-loginNew" glue-component="page.userOpt.component.unregister" glue-id="rootViewId">
-    #set($rseat='h5smslgnnrg_eph')
-    #set($areaCase = '1')
-    <div class="m-arrdess" glue-component="page.userOpt.component.showPhone"  data-case="$!{areaCase}">
-    <span class="choose-add" data-node="areaName"></span>
-    <div class="phone-num" data-node="phoneNumberShow"></div>
-    <a href="javascript:void(0);" class="link-alter" data-node="changePhone">修改</a>
-</div>
-
-    <div class="m-equipment-lock equipment-lock-bottom multi-line">
-        <div class="lock-num info-Left link-fz">该号码尚未注册过爱奇艺，勾选同意用户协议和隐私政策即可完成注册。</div>
-    </div>
-    <!-- 同意协议 -->
-<div class="m-agree" glue-component="page.userOpt.component.registerAgreement">
-    <p class="agree">
-        <a class="c-check-link" glue-node="checkbox"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>同意<a
-            data-node="protocol" href="javascript:void(0);" class="color">用户协议</a>和<a data-node="private"
-            href="javascript:void(0);" class="color">隐私政策</a> (必选)
-    </p>
-    <p class="agree">
-        <a class="c-check-link" glue-node="checkboxMsg"><i
-                class="c-glyphicon c-glyphicon-checkbox"></i></a>同意爱奇艺向您发送会员服务、精彩视频等商业信息
-    </p>
-</div>
-
-<!-- 同意协议end -->
-
-    <div class="btnWrap">
-        <div glue-show="showBtn==0">
-            #set($button = "注册")
-            #set($rseat='')
-            #set($selectedClass = 'disabled-btn')
-            <div glue-component="page.userOpt.component.sendSmsCodeBtn" glue-id="viewId">
-    <a class="c-btn-block c-btn-base $!{selectedClass}" href="javascript:void(0);" data-node="sendSmsCode" data-rseat="$!{rseat}">$!{button}</a>
-</div>
-
-        </div>
-    </div>
-    <div class="m-box" style="display:none;"
-    glue-component="page.userOpt.component.form.slideVerifyNew">
-    <div class="m-box-items m-box-items-full cover">
-        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
-        <div class="m-popup popup-yzm">
-        <div id="slide" class="m-yzm-code-wrap"></div>
-        </div>
-    </div>
-</div>
-
-</section>
- 
-        </script>
-    <script glue-node="queryPhone" type="text/velocity">
-         <div glue-component="page.userOpt.component.queryPhone" glue-id="rootViewId">
-    <div class="m-pc-weixin-icon" style=" margin-top: .55rem; margin-bottom: .55rem; text-align: center">
-      <img style="width: 3.669rem;" src="//pic0.iqiyipic.com/lequ/20240701/iqiyi-long-logo@3x.png" alt="">
-    </div>
-    <div class="m-tc-title-sms">
-      <span class="title" style="margin-left: .4472rem; margin-right: .4472rem; font-size: 0.1949rem;font-family:PingFangSC-Medium;" glue-component="page.userOpt.component.title">请输入要查询或解绑的手机号</span>
-    </div>
-    <section class="m-loginNew" style="padding: 0 .4472rem; padding-top: .18rem;">
-      #set($placeholder = "不重要")
-      #set($inputType = "phone")
-      #set($areaCase = '1')
-      <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
-    <div class="largest">
-        <div class="input_wrap detial-info">
-            <div class="address-selection" style="margin-right: .138rem;">
-                <select class="elect-area" data-node="area" style="font-size:.172rem; padding-right: .05rem;"></select>
-                <img style="width: .14rem;  height: .14rem; position: absolute; bottom: 0.24rem;" src="//pic2.iqiyipic.com/lequ/20240702/base_unfold@3x.png" alt="">
-            </div>
-            <div class="wrap-info" glue-show="usernameInput==1">
-                <!-- <div class="inner_top" glue-show="usernameTip==0" style="display: none;">$!{placeholder}</div> -->
-                <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
-                <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber"  data-node="username" type="$!{inputType}" placeholder="$!{placeholder}" style="font-size:.172rem; ">
-            </div>
-            
-            <div class="wrap-info" glue-show="usernameInput==-1" style="display: none; color: #000;">
-                <div class="enterNumber inputH" glue-node="usernameShadow" style="font-size: .172rem;"></div>
-            </div>
-            <a class="forward-btn" href="javascript:void(0);" data-node="forwardBtn" glue-show="showForwardBtn==1" style="display:none"></a>
-            <img glue-node="closePhoneNum" style="width: .2rem;  height: .2rem; position: absolute; bottom: 0.19rem; right: 0;display: none;" src="//pic2.iqiyipic.com/lequ/20240702/base_close@3x.png" alt="">
-        </div>
-    </div>
-</div>
-
-      <div class="m-tips-link resetHNew"  ></div>
-      #set($logintype = 'smsLogin')
   
-      <!-- 输入验证码模块 -->
-      <div class="largest">
-        <div class="input_wrap_new detial-info">
-            <input class="input-block-new enterNumber" data-node="smsCode" placeholder="请输入验证码2不重要" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
-            <img glue-node="closeValidate" style="width: .2rem;  height: .2rem; position: absolute; bottom: 0.16rem; right: 1.1rem; display: none;" src="//pic2.iqiyipic.com/lequ/20240702/base_close@3x.png" alt="">
-            <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span>
-            <span  class="access-ver-code access-ver-code-opacity" data-node="checkuser" data-type="checkuser" data-rseat="login_btn" data-rpage="phone_login1">不重要3</span>
-        </div>
-      </div>
-      <div class="btnWrap btnWrap-top">
-          <a class="c-btn-block c-btn-base" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}" style="border-radius: 44px; background-image: linear-gradient(90deg, rgba(245,248,252,1.00), rgba(245,248,252,1.00)); font-size: .19rem; color: rgba(0,0,0,0.30);">确认</a>
-      </div>
+        </script>
+ </div>
+    
        <!-- 第三方登录按钮 -->
       <div class="m-loginWay-new selected" glue-show="otherLoginShow==1" style="bottom: .55rem; text-align: center">
         <img style="width: .2rem;  height: .2rem;" src="//pic2.iqiyipic.com/lequ/20240701/base_query@3x.png" alt="">
