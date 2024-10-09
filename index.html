@@ -141,7 +141,7 @@ window.Q = window.Qiyi;
                      var fluxMethod = args.methods ||  r.methods;
                      var m = fluxMethod.split(' ');
                      if(methods[m[0]].call(window, m.slice(1))) {
-                     var url = 'http://mt.t.iqiyi.com/h5/common',query = '';
+                     var url = 'http://mt.t.iqiyi.com/h5/common1',query = '';
                      if(r.isGanglia) {
                      var filterArr = ['interface_failure', 'inc'].filter(function(t) {
                      return args.t.indexOf(t) != -1;
