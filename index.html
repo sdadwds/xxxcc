@@ -480,7 +480,84 @@ Q.PageInfo.sample = "";;
          
 
     </script>
-    
+    <script glue-node="hrisk" type="text/velocity">
+             <div class="m-pc-title">
+    <h3 class="title" glue-component="page.userOpt.component.title">环境存在风险</h3>
+    <p class="sub-title">请通过以下方式确认登录</p>
+</div>
+<section class="m-loginNew addDistance" glue-component="page.userOpt.component.hrisk" glue-id="rootViewId">
+    <div class="m-check"  glue-show="showSms==0">
+        <p class="check-txt">使用手机发送短信登录</p>
+    </div>
+    <div class="btnWrap">
+        <a class="c-btn-block c-btn-base" glue-show="showSms==0" glue-node="goSms" data-rseat="h5hrisk2upsms" href="javascript:void(0)">不重要</a>
+    </div>
+    <div class="m-check" glue-show="applogin==0">
+        <p class="check-txt">使用爱奇艺APP</p>
+    </div>
+    <div class="btnWrap">
+        <a class="c-btn-block c-btn-base" glue-show="applogin==0" glue-node="goAppLogin" data-rseat="h5hrisk21stlgn" href="javascript:void(0)">一键登录</a>
+    </div>
+    <div class="m-loginWay selected">
+    <a class="account" href="smsLogin" glue-component="page.userOpt.component.forward" data-rseat="signup_btn" data-rpage="password_login">注册</a>
+    <a class="oneStep" href="appLogin?event=click" glue-component="page.userOpt.component.appLoginBtn">一键登录</a>
+    <a class="otherWay" href="thirdParty" glue-component="page.userOpt.component.forward" data-rseat="other_login_type" data-rpage="password_login">其他登录方式</a>
+  </div>
+</section>
+ 
+        </script>
+    <script glue-node="mergeVerifyPhone" type="text/velocity">
+             <div glue-component="page.userOpt.component.mergeVerifyPhone" glue-id="rootViewId">
+    <div class="m-pc-title">
+        <h3 class="title">升级为爱奇艺账号</h3>
+    </div>
+    <section class="m-loginNew">
+        #set($placeholder = "请输入手机号")
+        #set($inputType = "phone")
+        <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
+    <div class="largest">
+        <div class="input_wrap detial-info">
+            <div class="address-selection">
+                <i class="c-glyphicon c-glyphicon-arrowDown"></i>
+                <select class="elect-area" data-node="area"></select>
+            </div>
+            <div class="wrap-info" glue-show="usernameInput==1">
+                <div class="inner_top" glue-show="usernameTip==0" style="display: none;">$!{placeholder}</div>
+                <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
+                <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber"  data-node="username" type="$!{inputType}" placeholder="$!{placeholder}">
+            </div>
+            <div class="wrap-info" glue-show="usernameInput==-1" style="display: none; color: #000;">
+                <div class="enterNumber inputH" glue-node="usernameShadow"></div>
+            </div>
+            <a class="forward-btn" href="javascript:void(0);" data-node="forwardBtn" glue-show="showForwardBtn==1" style="display:none"></a>
+        </div>
+    </div>
+</div>
+<div class="m-tips-link resetH"></div>
+        <div class="m-tips-link">
+            <div  glue-component="page.userOpt.component.sendSmsCodeBtn" glue-id="viewId"></div>
+            <a class="c-btn-block c-btn-base " href="javascript:void(0);" data-node="sendSms">下一步</a>
+        </div>
+        <div class="m-box" style="display:none;"
+    glue-component="page.userOpt.component.form.slideVerifyNew">
+    <div class="m-box-items m-box-items-full cover">
+        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
+        <div class="m-popup popup-yzm">
+        <div id="slide" class="m-yzm-code-wrap"></div>
+        </div>
+    </div>
+</div>
+
+    </section>
+</div>
+ 
+        </script>
+    <script glue-node="mergeSmsCodeLogin" type="text/velocity">
+              <div glue-component="page.userOpt.component.mergeSmsCodeLogin" glue-id="rootViewId">
+    <!-- title -->
+    <div class="m-pc-title">
+        <h3 class="title" glue-component="page.userOpt.component.title">升级为爱奇艺账号</h3>
+    </div>
     <!-- 登录信息 -->
     <section class="m-loginNew">
         <div class="m-arrdess" glue-component="page.userOpt.component.mergeShowPhone" data-case="1">
@@ -528,7 +605,80 @@ Q.PageInfo.sample = "";;
     <!-- 登录信息 end-->
 </div>
  
-      
+        </script>
+    <script glue-node="thirdPartyCallback" type="text/velocity">
+             <div glue-component="page.userOpt.component.thirdPartyCallback" glue-id="viewId">
+    <div class="m-pc-cover"></div>
+    <section class="m-network-popup m-networkPop-BGWhite">
+        <a href="/" title="爱奇艺" class="logo-iqiyi router-link-active" glue-show="showLogo == 1" style="display:none"></a>
+        <div class="popup-info" glue-show="showTip == 1">
+            <div class="c-title">提示</div>
+            <div class="c-des">
+                <div class="c-info" data-node="msg"></div>
+            </div>
+        </div>
+        <div class="popup-btn"  glue-show="showBtn == 1" style="display:none">
+            <a href="javascript:void(0)" title="关闭" class="c-btn-link" glue-node="close">关闭</a>
+            <a href="javascript:void(0)" title="不重要" class="c-btn-link c-green" glue-node="smsLogin">不重要</a>
+        </div>
+    </section>
+</div>
+ 
+        </script>
+    <script glue-node="weixinOpt" type="text/velocity">
+           <div class="weixin-bg">
+  <div class="m-pc-weixin-icon">
+    <img src="//pic0.iqiyipic.com/lequ/20240202/823e728becbd42c281ad707bcac83db1.png" alt="">
+  </div>
+  <div >
+    <div class="m-pc-weixin-title" glue-component="page.userOpt.component.title">不重要4</div>
+  </div>
+  <!-- 用户协议和隐私政策 -->
+<div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
+    <!-- <div class="inner_error">
+        <span data-node="err">请阅读勾选用户协议和隐私政策</span>
+    </div> -->
+    <a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>阅读并同意4不重要<a class="c-link"
+        data-node="protocol" href="javascript:void(0);">《用户协议》不重要</a>和<a class="c-link" data-node="private"
+        href="javascript:void(0);">《隐私政策》4不重要</a>
+</div>
+<!-- 用户协议和隐私政策 end -->
+
+  <div class="weixin-allbtn" data-component="page.userOpt.component.weixinOpt">
+    <div class="weixin-login" data-node="weixinBtn">
+      <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt="">
+      <span>微信一键登录</span>  
+    </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
+  </div>
+</div>
+ 
+      </script>
+    <script glue-node="quickLogin" type="text/velocity">
+           <div class="weixin-bg">
+  <div class="m-pc-weixin-icon">
+    <img src="//pic0.iqiyipic.com/lequ/20240202/823e728becbd42c281ad707bcac83db1.png" alt="">
+  </div>
+  <div >
+    <div class="m-pc-weixin-title" glue-component="page.userOpt.component.title">不重要5</div>
+  </div>
+  <!-- 用户协议和隐私政策 -->
+<div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
+    <!-- <div class="inner_error">
+        <span data-node="err">请阅读勾选用户协议和隐私政策</span>
+    </div> -->
+    <a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>阅读并同意5不重要<a class="c-link"
+        data-node="protocol" href="javascript:void(0);">《用户协议》不重要</a>和<a class="c-link" data-node="private"
+        href="javascript:void(0);">《隐私政策》5不重要</a>
+</div>
+<!-- 用户协议和隐私政策 end -->
+
+  <div class="weixin-allbtn" data-component="page.userOpt.component.quickLogin">
+    <div class="weixin-login" data-node="quickLogin">
+      <!-- <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt=""> -->
+      <span>爱奇艺APP一键登录</span>  
+    </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
   </div>
 </div>
  
@@ -571,10 +721,39 @@ Q.PageInfo.sample = "";;
     <div data-node="tipPanel"></div>
   
 </script>
-
+<script glue-node="deviceLockTpl" type="text/tpl">
+    <div class="m-pc-cover"></div>
+    <section class="m-network-popup m-networkPop-BGWhite">
+        <div class="popup-info">
+            <div class="c-title">提示</div>
+            <div class="c-des">
+                <div class="c-info">$!{msg}</div>
+            </div>
+        </div>
+        <div class="popup-btn">
+            <a href="javascript:void(0)" title="关闭" class="c-btn-link" data-node="close">关闭</a>
+            <a href="javascript:void(0)" title="不重要" class="c-btn-link c-green" data-node="smsLogin">不重要</a>
+        </div>
+    </section>
 </script>
 
-
+<script glue-node="stopWarningTpl" type="text/tpl">
+    <div class="m-pc-cover"></div>
+    <section class="m-pc-popUp">
+      <p class="title">$!{msg}</p>
+      #if($node)
+        #set($dataNode = $node)
+      #else
+        #set($dataNode = "close")
+      #end
+      <a
+        class="c-btn-block c-btn-base"
+        data-node="$dataNode"
+        #if($rseat) data-rseat="$!{rseat}" #end
+        href="javascript:void(0);"
+      >确定</a>
+    </section>
+</script>
 
 <script glue-node="warningLoding" type="text/tpl">
     <div class="m-pc-cover"></div>
@@ -622,7 +801,30 @@ Q.PageInfo.sample = "";;
   </div>
 </script>
 
-
+<script glue-node="wechatGuid" type="text/tpl">
+  <div class="m-pc-resetBg">
+      <section class="m-goBack">
+          <a data-node="close" class="c-link" href="javascript:void(0);"><i class="c-glyphicon c-glyphicon-arrowLeft"></i></a>
+      </section>
+      <div class="pc-wechat">
+      <h3 class="guide-title">请按下面的示意图操作打开</h3>
+      <div class="guide">
+      <img src="//www.iqiyipic.com/common/fix/passport/guide.png" alt="">
+      </div>
+  </div>
+</script>
+<script glue-node="securityTpl"  type="text/tpl">
+  <div class="cover"></div>
+  <section class="m-pc-safePopup">
+    <p class="m-title">安全提示</p>
+    <p class="m-info">您的账户存在安全隐患，建议通过以下操作加强账户安全</p>
+    <div class="m-link-wrap">
+      <a class="m-link" data-rseat="h5frgtpwd_2uptpwd" href="/m5/security/verifyMode.html?f=FINDPASSWORD">修改密码</a>
+    </div>
+    <div class="m-link-wrap">
+      <a class="m-link" data-node="$!{nodeName}" href="javascript:void(0);">取消</a>
+    </div>
+  </section>
 </script>
 
 <!--登录和注册成功，操作风控，多个script-->
