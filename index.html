@@ -335,80 +335,13 @@ Q.PageInfo.sample = "";;
             <a class="otherWay weiboClass" href="javascript:void(0)" data-node="openWeibo" data-rseat="other_login_type" data-rpage="phone_login1"></a> -->
           </div>
           <!-- <div class="m-loginWay selected">
-            <a class="account" href="javascript:void(0)" data-node="smsLogin"  data-rseat="signup_btn" data-rpage="password_login">不重要</a>
-            <a class="oneStep" href="appLogin?event=click" data-node="appLogin" glue-component="page.userOpt.component.appLoginBtn">一键登录</a>
-            <a class="otherWay" href="javascript:void(0)" data-node="thirdParty" data-rseat="other_login_type" data-rpage="password_login">其他登录方式</a>
+          
         </div> -->
       </div>
-      <!-- <div
-          class="m-loginGoApp"
-          glue-show="hiddenAppShow!=1"
-          data-component="page.userOpt.component.baseLogin"
-          data-node="goToAppBtn"
-          style="width: 100%;background-image: linear-gradient(45deg, rgb(50, 204, 255, 0.08) 0%, rgb(0, 225, 56, 0.08) 51%, rgb(0, 225, 56, 0.08) 100%);"
-      >
-          <img class="loginGoApp-logoImg" src="http://pic2.iqiyipic.com/lequ/20220623/72326d33cafc4224841d8001d244b9e4.png" alt="">
-          <span class="loginGoApp-title">前往爱奇艺APP继续登录</span>
-          <img class="loginGoApp-arrow" src="http://pic3.iqiyipic.com/lequ/20220623/392378ce23c244a797824e652167cf7c.png" alt="">
-      </div> -->
-  </section>
-</form>
- 
-        </script>
-    <script type="text/velocity" glue-node="smsCodeLogin">
-              <div glue-component="page.userOpt.component.smsCodeLogin" glue-id="rootViewId">
-    <!-- title -->
-    <div class="m-pc-title">
-        <h3 class="title" glue-component="page.userOpt.component.title">输入验证码</h3>
+    
     </div>
     <!-- 登录信息 -->
-    <section class="m-loginNew">
-        #set($areaCase = '1')
-        <div class="m-arrdess" glue-component="page.userOpt.component.showPhone"  data-case="$!{areaCase}">
-    <span class="choose-add" data-node="areaName"></span>
-    <div class="phone-num" data-node="phoneNumberShow"></div>
-    <a href="javascript:void(0);" class="link-alter" data-node="changePhone">修改</a>
-</div>
-
-        <div glue-component="page.userOpt.component.timeSendSMS" glue-id="viewIdA">
-    <div class="m-equipment-lock equipment-lock-bottom multi-line" glue-show="smscodeerror==0">
-        <div class="lock-num info-Left link-fz">已发送短信验证码，接收大约需要<span data-node="countTime"></span>秒</div>
-    </div>
-    <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==1" style="display: none">
-        <a href="javascript:void(0);"><div class="lock-num info-Left link-fz link-Gcolor" data-node="resendSms">没有收到短信？点击重新发送</div></a>
-    </div>
-    <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==2" style="display: none">
-        <div class="lock-num info-Left link-fz wrap-tip" data-node="errMsg">
-            系统错误，请稍后再试</div>
-    </div>
-</div>
-
-        #set($rseat='next_step')
-        #set($rpage='phone_login2')
-        <div glue-component="page.userOpt.component.smsCodeButton" glue-id="viewId">
-    <div class="largest">
-        <div class="input_wrap detial-info">
-            <input class="input-block enterNumber" data-node="smsCode" placeholder="请输入收到的验证码" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
-            <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span>
-        </div>
-    </div>
-    <div class="btnWrap btnWrap-top" glue-show="showBtn==0" style="display:none">
-        <a class="c-btn-block c-btn-base" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}">下一步</a>
-    </div>
-</div>
-
-        <div class="m-tips-link resetH"></div>
-        <div class="m-box" style="display:none;"
-    glue-component="page.userOpt.component.form.slideVerifyNew">
-    <div class="m-box-items m-box-items-full cover">
-        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
-        <div class="m-popup popup-yzm">
-        <div id="slide" class="m-yzm-code-wrap"></div>
-        </div>
-    </div>
-</div>
-
-    </section>
+  
     <!-- 登录信息 end-->
 </div>
 
