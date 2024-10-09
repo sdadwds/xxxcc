@@ -212,250 +212,329 @@ Q.PageInfo.sample = "";;
 </script>
 
 
+
 <body>
   <!--手机号输入，忘记密码的提示框，图片和滑动验证码，请等待，登录成功，登录过于频繁的提示框，手机号未注册-->
   <div class="m-pc-resetBg" glue-component="page.userOpt.component.router" glue-id="switcher">
+    <!-- 返回按钮部分 -->
     <section class="m-goBack" glue-component="page.userOpt.component.goback" glue-id="goBack">
-    <a data-node="goBack" class="c-link" href="javascript:void(0);"><i class="c-glyphicon c-glyphicon-arrowLeft"></i></a>
-</section>
+      <!-- 返回按钮链接，点击后执行返回操作 -->
+      <a data-node="goBack" class="c-link" href="javascript:void(0);">
+        <!-- 返回按钮图标 -->
+        <i class="c-glyphicon c-glyphicon-arrowLeft"></i>
+      </a>
+    </section>
+    <!-- 动态插入内容的容器 -->
     <div glue-node="view"></div>
+
+    <!-- 登录页面的脚本，使用Velocity模板引擎 -->
     <script glue-node="baseLogin" type="text/velocity">
-             <div class="m-pc-title-sms">
-  <h3 class="title" glue-component="page.userOpt.component.title">登录爱奇艺2</h3>
+      <!-- 标题部分，显示"登录爱奇艺2" -->
+      <div class="m-pc-title-sms">
+        <h3 class="title" glue-component="page.userOpt.component.title">登录爱奇艺2</h3>
+      </div>
+
+      <!-- 表单开始 -->
+      <form>
+        <section class="m-loginNew">
+          <!-- 账号登录部分 -->
+          <div data-component="page.userOpt.component.baseLogin" glue-id="viewId">
+            <!-- 设置手机号或邮箱输入的占位符和类型 -->
+            #set($placeholder = "请输入手机号或邮箱1")
+            #set($inputType = "text")
+            #set($areaCase = '1')
+            #set($logintype = 'baseLogin')
+
+            <!-- 用户名输入部分 -->
+            <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
+              <div class="largest">
+                <div class="input_wrap detial-info">
+                  <!-- 选择区号 -->
+                  <div class="address-selection">
+                    <!-- 下拉箭头图标 -->
+                    <i class="c-glyphicon c-glyphicon-arrowDown"></i>
+                    <!-- 区号选择框 -->
+                    <select class="elect-area" data-node="area"></select>
+                  </div>
+
+                  <!-- 用户名输入框部分，当usernameInput为1时显示 -->
+                  <div class="wrap-info" glue-show="usernameInput==1">
+                    <!-- 提示文字，初始隐藏，当usernameTip为0时显示 -->
+                    <div class="inner_top" glue-show="usernameTip==0" style="display: none;">
+                      $!{placeholder}
+                    </div>
+                    <!-- 错误提示，初始隐藏，当usernameTip为1时显示 -->
+                    <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
+                    <!-- 用户名输入框 -->
+                    <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber" data-node="username" type="$!{inputType}" placeholder="$!{placeholder}">
+                  </div>
+
+                  <!-- 阴影效果部分，当usernameInput为-1时显示，初始隐藏 -->
+                  <div class="wrap-info" glue-show="usernameInput==-1" style="display: none; color: #000;">
+                    <div class="enterNumber inputH" glue-node="usernameShadow"></div>
+                  </div>
+
+                  <!-- 转发按钮，当showForwardBtn为1时显示，初始隐藏 -->
+                  <a class="forward-btn" href="javascript:void(0);" data-node="forwardBtn" glue-show="showForwardBtn==1" style="display:none"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </script>
+  </div>
+</body>
+
+
+         #set($pwdholder = "请输入密码1")
+<!-- 密码输入部分 -->
+<div class="largest" glue-component="page.userOpt.component.password">
+    <!-- 密码提示，初始隐藏，当passwordTip为0时显示 -->
+    <div class="inner_bottom" glue-show="passwordTip==0" style="display: none;">
+        $!{pwdholder}
+    </div>
+    <!-- 密码错误提示，初始隐藏，当passwordTip为1时显示 -->
+    <div class="inner_bottom error-top" data-node="passwordError" glue-show="passwordTip==1" style="display: none;">
+        <i></i>
+    </div>
+
+    <!-- 密码输入框 -->
+    <div class="input_wrap detial-info input-buttom-new">
+        <!-- 密码输入框，类型为password，使用变量pwdholder作为占位符 -->
+        <input data-node="password" class="input-block enterNumber" placeholder="$!{pwdholder}" type="password">
+        <!-- 显示密码按钮，初始隐藏，当pwdModel为1时显示 -->
+        <a class="tip_icon" data-node="showpwdModel" glue-show="pwdModel==1" data-rseat="h5lgn_cpwd" style="display: none;" href="javascript:void(0);">
+            <i class="c-glyphicon c-glyphicon-eye"></i>
+        </a>
+        <!-- 隐藏密码按钮，初始隐藏，当pwdModel为0时显示 -->
+        <a class="tip_icon" data-node="hidepwdModel" glue-show="pwdModel==0" data-rseat="h5lgn_cpwd" style="display: none;" href="javascript:void(0);">
+            <i class="c-glyphicon c-glyphicon-eyeWhite"></i>
+        </a>
+        <!-- 忘记密码链接 -->
+        <span class="m-tips-link">
+            <a class="c-tips-link" data-node="forgetPwd" href="javascript:void(0);">忘记密码1</a>
+        </span>
+    </div>
 </div>
-<form>
-  <section class="m-loginNew">
-      <div data-component="page.userOpt.component.baseLogin" glue-id="viewId">
-          #set($placeholder = "请输入手机号或邮箱1")
-          #set($inputType = "text")
-          #set($areaCase = '1')
-          #set($logintype = 'baseLogin')
-          <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
-    <div class="largest">
-        <div class="input_wrap detial-info">
-            <div class="address-selection">
-                <i class="c-glyphicon c-glyphicon-arrowDown"></i>
-                <select class="elect-area" data-node="area"></select>
-            </div>
-            <div class="wrap-info" glue-show="usernameInput==1">
-                <div class="inner_top" glue-show="usernameTip==0" style="display: none;">$!{placeholder}</div>
-                <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
-                <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber"  data-node="username" type="$!{inputType}" placeholder="$!{placeholder}">
-            </div>
-            <div class="wrap-info" glue-show="usernameInput==-1" style="display: none; color: #000;">
-                <div class="enterNumber inputH" glue-node="usernameShadow"></div>
-            </div>
-            <a class="forward-btn" href="javascript:void(0);" data-node="forwardBtn" glue-show="showForwardBtn==1" style="display:none"></a>
+
+<!-- 用户协议和隐私政策部分 -->
+<div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
+    <!-- 阅读并同意协议的复选框 -->
+    <a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>
+    阅读并同意1
+    <!-- 用户协议链接 -->
+    <a class="c-link" data-node="protocol" href="javascript:void(0);">《用户协议》1</a>
+    和
+    <!-- 隐私政策链接 -->
+    <a class="c-link" data-node="private" href="javascript:void(0);">《隐私政策》1</a>
+</div>
+<!-- 用户协议和隐私政策部分结束 -->
+
+<!-- 登录按钮 -->
+<div class="btnWrap" id="baselogin-loginbtn">
+    <a class="c-btn-block c-btn-base c-btn-base-opacity" data-node="loginBtn" data-rseat="login_btn" data-rpage="password_login" href="javascript:void(0);">
+        登录爱奇艺1
+    </a>
+</div>
+
+<!-- 滑动验证码部分，初始隐藏 -->
+<div class="m-box" style="display:none;" glue-component="page.userOpt.component.autoVerify">
+    <div class="m-box-items m-box-items-full cover">
+        <!-- 验证码关闭按钮 -->
+        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
+        <!-- 验证码弹出框 -->
+        <div class="m-popup popup-yzm">
+            <!-- 滑动验证码区域 -->
+            <div id="h5-slide-wrap" glue-node="slide"></div>
         </div>
     </div>
 </div>
 
-          #set($pwdholder = "请输入密码1")
-          <div class="largest" glue-component="page.userOpt.component.password">
-        <div class="inner_bottom" glue-show="passwordTip==0" style="display: none;">$!{pwdholder}</div>
-        <div class="inner_bottom error-top" data-node="passwordError"  glue-show="passwordTip==1" style="display: none;"><i></i></div>
-        <div class="input_wrap detial-info input-buttom-new">
-                <input data-node="password" class="input-block enterNumber" placeholder="$!{pwdholder}" type="password">
-                <a class="tip_icon" data-node="showpwdModel" glue-show="pwdModel==1" data-rseat="h5lgn_cpwd" style="display: none;" href="javascript:void(0);" ><i class="c-glyphicon c-glyphicon-eye"></i></a>
-                <a class="tip_icon" data-node="hidepwdModel" glue-show="pwdModel==0" data-rseat="h5lgn_cpwd" style="display: none;" href="javascript:void(0);" ><i class="c-glyphicon c-glyphicon-eyeWhite"></i></a>
-                <span class="m-tips-link">
-                  <a class="c-tips-link " data-node="forgetPwd"
-                      href="javascript:void(0);">忘记密码1</a>
-              </span>
-        </div>
-</div>
 
-          <!-- <div class="m-tips-link">
-              <a class="c-tips-link " data-node="forgetPwd"
-                  href="javascript:void(0);">不重要</a>
-          </div> -->
-          <!-- 用户协议和隐私政策 -->
-<div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
-    <!-- <div class="inner_error">
-        <span data-node="err">请阅读勾选用户协议和隐私政策</span>
-    </div> -->
-    <a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>阅读并同意1<a class="c-link"
-        data-node="protocol" href="javascript:void(0);">《用户协议》1</a>和<a class="c-link" data-node="private"
-        href="javascript:void(0);">《隐私政策》1</a>
-</div>
-<!-- 用户协议和隐私政策 end -->
 
-          <div class="btnWrap" id="baselogin-loginbtn">
-              <a class="c-btn-block c-btn-base c-btn-base-opacity" data-node="loginBtn" data-rseat="login_btn" data-rpage="password_login"
-                  href="javascript:void(0);">登录爱奇艺1</a>
-          </div>
-          <div
-  class="m-box"
-  style="display:none;"
-  glue-component="page.userOpt.component.autoVerify"
->
-<div class="m-box-items m-box-items-full cover">
-  <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
-  <div class="m-popup popup-yzm">
-    <div id="h5-slide-wrap" glue-node="slide"></div>
-  </div>
+
+
     
 </div>
   
 </div>
-          <div class="btnWrap" glue-show="showMiRouterBtn==0" style="display:none">
-              <a data-node="miRouter" href="javascript:void(0)" class="c-btn-block c-btn-base xiaomi"><i
-                      class="c-icon-mi"></i>小米账号登录</a>
-          </div>
-          <div class="m-box" style="display:none;"
-    glue-component="page.userOpt.component.form.slideVerifyNew">
+          以下是添加了详细注释的代码：
+
+<!-- 小米账号登录按钮，初始隐藏，当showMiRouterBtn为0时显示 -->
+<div class="btnWrap" glue-show="showMiRouterBtn==0" style="display:none">
+    <a data-node="miRouter" href="javascript:void(0)" class="c-btn-block c-btn-base xiaomi">
+        <!-- 小米图标 -->
+        <i class="c-icon-mi"></i>
+        小米账号登录
+    </a>
+</div>
+
+<!-- 滑动验证码组件，初始隐藏 -->
+<div class="m-box" style="display:none;" glue-component="page.userOpt.component.form.slideVerifyNew">
     <div class="m-box-items m-box-items-full cover">
+        <!-- 关闭验证码弹窗按钮 -->
         <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
+        <!-- 验证码弹窗内容 -->
         <div class="m-popup popup-yzm">
-        <div id="slide" class="m-yzm-code-wrap"></div>
+            <!-- 滑动验证码区域 -->
+            <div id="slide" class="m-yzm-code-wrap"></div>
         </div>
     </div>
 </div>
 
-          <div class="m-loginWay-new selected" glue-show="otherLoginShow==1">
-            <a class="account" href="javascript:void(0)" data-node="smsLogin" data-rseat="signup_btn"
-              data-rpage="password_login">短信登录1</a>
-              #set($logintype = 'baseLogin')
-              <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
-  <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
-  <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
-  <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
-  <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
+<!-- 其他登录方式区域，初始隐藏，当otherLoginShow为1时显示 -->
+<div class="m-loginWay-new selected" glue-show="otherLoginShow==1">
+    <!-- 短信登录链接 -->
+    <a class="account" href="javascript:void(0)" data-node="smsLogin" data-rseat="signup_btn" data-rpage="password_login">
+        短信登录1
+    </a>
+
+    #set($logintype = 'baseLogin')
+
+    <!-- 第三方登录图标区域 -->
+    <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
+        <!-- 微信登录图标 -->
+        <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" 
+             src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
+        <!-- QQ登录图标 -->
+        <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" 
+             src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
+        <!-- 微博登录图标 -->
+        <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" 
+             src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
+        <!-- 百度账号登录图标 -->
+        <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" 
+             src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
+    </div>
 </div>
 
-            <!-- <div class="thirdIcon">
-              <img class="otherWay weixinClass" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
-              <img class="otherWay QQClass" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
-              <img class="otherWay weiboClass" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
-              <img class="otherWay baiduClass" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
-            </div> -->
-            <!-- <a class="otherWay weixinClass" href="javascript:void(0)" data-node="openWeixin" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-            <a class="otherWay QQClass" href="javascript:void(0)" data-node="openQQ" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-            <a class="otherWay baiduClass" href="javascript:void(0)" data-node="openBaidu" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-            <a class="otherWay weiboClass" href="javascript:void(0)" data-node="openWeibo" data-rseat="other_login_type" data-rpage="phone_login1"></a> -->
-          </div>
-          <!-- <div class="m-loginWay selected">
-          
-        </div> -->
-      </div>
-    
-    </div>
+
+
     <!-- 登录信息 -->
   
     <!-- 登录信息 end-->
+<!-- 爱奇艺登录页面的JavaScript片段，用于短信登录 -->
 </div>
 
-        
-  </section>
+</section>
 
 </section> 
-        </script>
+</script>
 
-    <script glue-node="smsLogin" type="text/velocity">
-             <div glue-component="page.userOpt.component.smsLogin" glue-id="rootViewId">
-  <div class="m-pc-title-sms">
-    <h4 class="title" glue-component="page.userOpt.component.title">登录爱奇艺3</h4>
-  </div>
-  <section class="m-loginNew">
-    #set($placeholder = "输入手机号1")
-    #set($inputType = "phone")
-    #set($areaCase = '1')
-    <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
-    <div class="largest">
-        <div class="input_wrap detial-info">
+<script glue-node="smsLogin" type="text/velocity">
+  <!-- 短信登录页面的容器 -->
+  <div glue-component="page.userOpt.component.smsLogin" glue-id="rootViewId">
+    <div class="m-pc-title-sms">
+      <!-- 短信登录的标题 -->
+      <h4 class="title" glue-component="page.userOpt.component.title">登录爱奇艺3</h4>
+    </div>
+
+    <!-- 登录模块 -->
+    <section class="m-loginNew">
+      <!-- 定义占位符和输入框类型 -->
+      #set($placeholder = "输入手机号1")
+      #set($inputType = "phone")
+      #set($areaCase = '1')
+
+      <!-- 手机号输入框 -->
+      <div glue-component="page.userOpt.component.username" data-case="$!{areaCase}" data-logintype="$!{logintype}">
+        <div class="largest">
+          <div class="input_wrap detial-info">
+            <!-- 手机号前的地区选择器 -->
             <div class="address-selection">
-                <i class="c-glyphicon c-glyphicon-arrowDown"></i>
-                <select class="elect-area" data-node="area"></select>
+              <i class="c-glyphicon c-glyphicon-arrowDown"></i>
+              <select class="elect-area" data-node="area"></select>
             </div>
+            <!-- 用户输入手机号时的提示信息 -->
             <div class="wrap-info" glue-show="usernameInput==1">
-                <div class="inner_top" glue-show="usernameTip==0" style="display: none;">$!{placeholder}</div>
-                <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
-                <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber"  data-node="username" type="$!{inputType}" placeholder="$!{placeholder}">
+              <div class="inner_top" glue-show="usernameTip==0" style="display: none;">$!{placeholder}</div>
+              <div class="inner_top inner_top_error" data-node="usernameError" glue-show="usernameTip==1" style="display: none;"></div>
+              <!-- 手机号输入框 -->
+              <input class="input-block enterNumber inputH" id="phoneNumber" name="phoneNumber" data-node="username" type="$!{inputType}" placeholder="$!{placeholder}">
             </div>
+            <!-- 显示用户输入的手机号影像 -->
             <div class="wrap-info" glue-show="usernameInput==-1" style="display: none; color: #000;">
-                <div class="enterNumber inputH" glue-node="usernameShadow"></div>
+              <div class="enterNumber inputH" glue-node="usernameShadow"></div>
             </div>
+            <!-- 前进按钮，默认隐藏 -->
             <a class="forward-btn" href="javascript:void(0);" data-node="forwardBtn" glue-show="showForwardBtn==1" style="display:none"></a>
+          </div>
         </div>
-    </div>
-</div>
-
-    <div class="m-tips-link resetHNew"></div>
-    #set($logintype = 'smsLogin')
-    <!-- 用户协议和隐私政策 -->
-<div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
-    <!-- <div class="inner_error">
-        <span data-node="err">请阅读勾选用户协议和隐私政策</span>
-    </div> -->
-<a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>阅读并同意3<a class="c-link"
-        data-node="protocol" href="javascript:void(0);">《用户协议》3</a>和<a class="c-link" data-node="private"
-        href="javascript:void(0);">《隐私政策》3</a>
-</div>
-<!-- 用户协议和隐私政策 end -->
-
-
-    <!-- 输入验证码模块 -->
-    <div class="largest">
-      <div class="input_wrap_new detial-info">
-          <input class="input-block-new enterNumber" data-node="smsCode" placeholder="请输入验证码1" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
-          <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span>
-          <span  class="access-ver-code access-ver-code-opacity" data-node="checkuser" data-type="checkuser" data-rseat="login_btn" data-rpage="phone_login1">获取验证码1</span>
-          <!-- <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span> -->
       </div>
-    </div>
-    <div class="btnWrap btnWrap-top">
-        <a class="c-btn-block c-btn-base c-btn-base-opacity" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}">登录爱奇艺4</a>
-    </div>
 
-    <!-- <div class="m-tips-link" glue-show="showBtn == 0" style="display:none">
-      <div glue-component="page.userOpt.component.sendSmsCodeBtn" glue-id="viewId"></div>
-      <a class="c-btn-block c-btn-base " href="javascript:void(0);" data-node="checkuser" data-rseat="login_btn"
-        data-rpage="phone_login1">获取短信验证码</a>
-    </div> -->
-    <div class="m-box" style="display:none;"
-    glue-component="page.userOpt.component.form.slideVerifyNew">
-    <div class="m-box-items m-box-items-full cover">
-        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
-        <div class="m-popup popup-yzm">
-        <div id="slide" class="m-yzm-code-wrap"></div>
+      <!-- 手机号输入完成后的空白提示框 -->
+      <div class="m-tips-link resetHNew"></div>
+
+      #set($logintype = 'smsLogin')
+
+      <!-- 用户协议和隐私政策 -->
+      <div class="agreement-link" data-logintype="$!{logintype}" glue-component="page.userOpt.component.protocol" data-node="protocolBox">
+        <!-- 同意协议的勾选框 -->
+        <a class="c-check-link" data-node="agree"><i class="c-glyphicon c-glyphicon-checkbox"></i></a>
+        阅读并同意3
+        <!-- 用户协议链接 -->
+        <a class="c-link" data-node="protocol" href="javascript:void(0);">《用户协议》3</a>和
+        <!-- 隐私政策链接 -->
+        <a class="c-link" data-node="private" href="javascript:void(0);">《隐私政策》3</a>
+      </div>
+      <!-- 用户协议和隐私政策 结束 -->
+
+      <!-- 输入验证码模块 -->
+      <div class="largest">
+        <div class="input_wrap_new detial-info">
+          <!-- 验证码输入框 -->
+          <input class="input-block-new enterNumber" data-node="smsCode" placeholder="请输入验证码1" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
+          <!-- 验证码错误提示 -->
+          <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none">
+            <i class="c-glyphicon c-glyphicon-failde"></i>
+            <span glue-node="errorMsg"></span>
+          </span>
+          <!-- 获取验证码按钮 -->
+          <span class="access-ver-code access-ver-code-opacity" data-node="checkuser" data-type="checkuser" data-rseat="login_btn" data-rpage="phone_login1">
+            获取验证码1
+          </span>
         </div>
-    </div>
-</div>
+      </div>
 
-     <!-- 第三方登录按钮 -->
-    <div class="m-loginWay-new selected" glue-show="otherLoginShow==1">
-      <a class="account" href="javascript:void(0)" data-node="changePassword" data-rseat="password_btn"
-        data-rpage="phone_login1">密码登录1</a>
-        #set($logintype = 'smsLogin')
-        <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
-  <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
-  <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
-  <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
-  <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
-</div>
+      <!-- 确认登录按钮 -->
+      <div class="btnWrap btnWrap-top">
+        <a class="c-btn-block c-btn-base c-btn-base-opacity" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}">
+          登录爱奇艺4
+        </a>
+      </div>
 
-      <!-- <div class="thirdIcon">
-        <img class="otherWay weixinClass" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
-        <img class="otherWay QQClass" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
-        <img class="otherWay weiboClass" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
-        <img class="otherWay baiduClass" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
-      </div> -->
-      <!-- <a class="otherWay weixinClass" href="javascript:void(0)" data-node="openWeixin" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-      <a class="otherWay QQClass" href="javascript:void(0)" data-node="openQQ" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-      <a class="otherWay baiduClass" href="javascript:void(0)" data-node="openBaidu" data-rseat="other_login_type" data-rpage="phone_login1"></a>
-      <a class="otherWay weiboClass" href="javascript:void(0)" data-node="openWeibo" data-rseat="other_login_type" data-rpage="phone_login1"></a> -->
-    </div>
-    <!-- <div class="m-loginGoApp" glue-show="hiddenAppShow!=1" data-component="page.userOpt.component.baseLogin"
-      data-node="goToAppBtn"
-      style="width: 100%;background-image: linear-gradient(45deg, rgb(50, 204, 255, 0.08) 0%, rgb(0, 225, 56, 0.08) 51%, rgb(0, 225, 56, 0.08) 100%);">
-      <img class="loginGoApp-logoImg" src="http://pic2.iqiyipic.com/lequ/20220623/72326d33cafc4224841d8001d244b9e4.png"
-        alt="">
-      <span class="loginGoApp-title">前往爱奇艺APP继续登录</span>
-      <img class="loginGoApp-arrow" src="http://pic3.iqiyipic.com/lequ/20220623/392378ce23c244a797824e652167cf7c.png"
-        alt="">
-    </div> -->
-  </section>
-</div>
+      <!-- 滑动验证码模块，默认隐藏 -->
+      <div class="m-box" style="display:none;" glue-component="page.userOpt.component.form.slideVerifyNew">
+        <div class="m-box-items m-box-items-full cover">
+          <!-- 关闭验证码弹窗按钮 -->
+          <div class="m-yzm-close" glue-node="close">
+            <i class="c-glyphicon c-glyphicon-guideClose"></i>
+          </div>
+          <!-- 滑动验证码弹窗 -->
+          <div class="m-popup popup-yzm">
+            <div id="slide" class="m-yzm-code-wrap"></div>
+          </div>
+        </div>
+      </div>
+  <!-- 第三方登录按钮 -->
+<div class="m-loginWay-new selected" glue-show="otherLoginShow==1">
+  <!-- 密码登录按钮 -->
+  <a class="account" href="javascript:void(0)" data-node="changePassword" data-rseat="password_btn"
+    data-rpage="phone_login1">密码登录1</a>
+  <!-- 设置登录类型为短信登录 -->
+  #set($logintype = 'smsLogin')
+  <!-- 第三方登录图标 -->
+  <div class="thirdIcon" glue-component="page.userOpt.component.thirdIcon" data-logintype="$!{logintype}">
+    <!-- 微信登录图标 -->
+    <img class="otherWay weixinClass" data-logintype="$!{logintype}" data-node="weixin" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/1ad403cd36e249368b7649ef658ee668.png" alt="">
+    <!-- QQ登录图标 -->
+    <img class="otherWay QQClass" data-logintype="$!{logintype}" data-node="qq" data-delegate="authLoginBtn" src="//pic2.iqiyipic.com/lequ/20240426/0eb89fed8e3a4d65abfb8f7a52edb8d5.png" alt="">
+    <!-- 微博登录图标 -->
+    <img class="otherWay weiboClass" data-logintype="$!{logintype}" data-node="sina" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/08badc1537d74e72b8b86dfa8df0d278.png" alt="">
+    <!-- 百度登录图标 -->
+    <img class="otherWay baiduClass" data-logintype="$!{logintype}" data-node="baidu" data-delegate="authLoginBtn" src="//pic0.iqiyipic.com/lequ/20240426/4963b86b25e84349883511c968ffeddf.png" alt="">
+  </div>
  
         
     </div>
@@ -476,140 +555,138 @@ Q.PageInfo.sample = "";;
   </div>
    
     </script>
-    <script glue-node="unlink" type="text/velocity">
-         
+  <script glue-node="unlink" type="text/velocity">
+    <!-- 此处可以添加用于解除链接的JavaScript代码 -->
+</script>
 
-    </script>
-   
+</div> <!-- 关闭之前的div -->
+</div> <!-- 关闭上一层div -->
+</div> <!-- 关闭最外层div -->
+
+</section> <!-- 结束section -->
+</div> <!-- 关闭外层div -->
+
+<script glue-node="mergeSmsCodeLogin" type="text/velocity">
+    <div glue-component="page.userOpt.component.mergeSmsCodeLogin" glue-id="rootViewId">
+        <!-- 标题部分 -->
+        <div class="m-pc-title">
+            <h3 class="title" glue-component="page.userOpt.component.title">升级为爱奇艺账号</h3>
         </div>
-    </div>
-</div>
+        <!-- 登录信息部分 -->
+        <section class="m-loginNew">
+            <div class="m-arrdess" glue-component="page.userOpt.component.mergeShowPhone" data-case="1">
+                <span class="choose-add" data-node="areaName"></span> <!-- 显示地区名称 -->
+                <div class="phone-num" data-node="phoneNumberShow"></div> <!-- 显示手机号 -->
+                <a href="javascript:void(0);" class="link-alter" data-node="changePhone" glue-show="showModify==1">修改</a> <!-- 修改手机号的链接 -->
+            </div>
+            <div glue-component="page.userOpt.component.timeSendSMS" glue-id="viewIdA">
+                <div class="m-equipment-lock equipment-lock-bottom multi-line" glue-show="smscodeerror==0">
+                    <div class="lock-num info-Left link-fz">已发送短信验证码，接收大约需要<span data-node="countTime"></span>秒</div> <!-- 短信验证码发送成功 -->
+                </div>
+                <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==1" style="display: none">
+                    <a href="javascript:void(0);"><div class="lock-num info-Left link-fz link-Gcolor" data-node="resendSms">没有收到短信？点击重新发送</div></a> <!-- 重新发送短信验证码的链接 -->
+                </div>
+                <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==2" style="display: none">
+                    <div class="lock-num info-Left link-fz wrap-tip" data-node="errMsg">
+                        系统错误，请稍后再试</div> <!-- 显示系统错误信息 -->
+                </div>
+            </div>
 
-    </section>
-</div>
- 
-        </script>
-    <script glue-node="mergeSmsCodeLogin" type="text/velocity">
-              <div glue-component="page.userOpt.component.mergeSmsCodeLogin" glue-id="rootViewId">
-    <!-- title -->
-    <div class="m-pc-title">
-        <h3 class="title" glue-component="page.userOpt.component.title">升级为爱奇艺账号</h3>
-    </div>
-    <!-- 登录信息 -->
-    <section class="m-loginNew">
-        <div class="m-arrdess" glue-component="page.userOpt.component.mergeShowPhone" data-case="1">
-            <span class="choose-add" data-node="areaName"></span>
-            <div class="phone-num" data-node="phoneNumberShow"></div>
-            <a href="javascript:void(0);" class="link-alter" data-node="changePhone" glue-show="showModify==1">修改</a>
-        </div>
-        <div glue-component="page.userOpt.component.timeSendSMS" glue-id="viewIdA">
-    <div class="m-equipment-lock equipment-lock-bottom multi-line" glue-show="smscodeerror==0">
-        <div class="lock-num info-Left link-fz">已发送短信验证码，接收大约需要<span data-node="countTime"></span>秒</div>
-    </div>
-    <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==1" style="display: none">
-        <a href="javascript:void(0);"><div class="lock-num info-Left link-fz link-Gcolor" data-node="resendSms">没有收到短信？点击重新发送</div></a>
-    </div>
-    <div class="m-equipment-lock equipment-lock-bottom" glue-show="smscodeerror==2" style="display: none">
-        <div class="lock-num info-Left link-fz wrap-tip" data-node="errMsg">
-            系统错误，请稍后再试</div>
-    </div>
-</div>
+            <div glue-component="page.userOpt.component.smsCodeButton" glue-id="viewId">
+                <div class="largest">
+                    <div class="input_wrap detial-info">
+                        <input class="input-block enterNumber" data-node="smsCode" placeholder="请输入收到的验证码" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')"> <!-- 输入短信验证码的文本框 -->
+                        <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none">
+                            <i class="c-glyphicon c-glyphicon-failde"></i>
+                            <span glue-node="errorMsg"></span>
+                        </span> <!-- 显示验证码输入错误的信息 -->
+                    </div>
+                </div>
+                <div class="btnWrap btnWrap-top" glue-show="showBtn==0" style="display:none">
+                    <a class="c-btn-block c-btn-base" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}">下一步</a> <!-- 下一步按钮 -->
+                </div>
+            </div>
 
-        <div glue-component="page.userOpt.component.smsCodeButton" glue-id="viewId">
-    <div class="largest">
-        <div class="input_wrap detial-info">
-            <input class="input-block enterNumber" data-node="smsCode" placeholder="请输入收到的验证码" type="text" pattern="\d*" maxlength="6" onkeyup="value=this.value.replace(/\D+/g,'')">
-            <span class="wrap-tip" glue-show="smsCodeError==1" style="display:none"><i class="c-glyphicon c-glyphicon-failde"></i><span glue-node="errorMsg"></span></span>
-        </div>
-    </div>
-    <div class="btnWrap btnWrap-top" glue-show="showBtn==0" style="display:none">
-        <a class="c-btn-block c-btn-base" href="javascript:void(0);" glue-node="smsConfirm" data-rseat="$!{rseat}" data-rpage="$!{rpage}">下一步</a>
-    </div>
-</div>
 
-        <div class="m-tips-link resetH"></div>
-        <div class="m-box" style="display:none;"
-    glue-component="page.userOpt.component.form.slideVerifyNew">
+        <div class="m-tips-link resetH"></div> <!-- 提示链接区域 -->
+<div class="m-box" style="display:none;" glue-component="page.userOpt.component.form.slideVerifyNew">
     <div class="m-box-items m-box-items-full cover">
-        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div>
+        <div class="m-yzm-close" glue-node="close"><i class="c-glyphicon c-glyphicon-guideClose"></i></div> <!-- 关闭验证码框的按钮 -->
         <div class="m-popup popup-yzm">
-        <div id="slide" class="m-yzm-code-wrap"></div>
+            <div id="slide" class="m-yzm-code-wrap"></div> <!-- 滑动验证码的区域 -->
         </div>
     </div>
 </div>
 
-    </section>
-    <!-- 登录信息 end-->
+</section>
+<!-- 登录信息 end -->
 </div>
- 
-    
 
-  <div class="weixin-allbtn" data-component="page.userOpt.component.weixinOpt">
+<div class="weixin-allbtn" data-component="page.userOpt.component.weixinOpt"> <!-- 微信登录区域 -->
     <div class="weixin-login" data-node="weixinBtn">
-      <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt="">
-      <span>微信一键登录</span>  
+        <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt=""> <!-- 微信登录图标 -->
+        <span>微信一键登录</span> <!-- 微信一键登录文字 -->
     </div>
-    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
-  </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div> <!-- 短信验证登录切换按钮 -->
 </div>
- 
-     
 </div>
+
 <!-- 用户协议和隐私政策 end -->
 
-  <div class="weixin-allbtn" data-component="page.userOpt.component.quickLogin">
+<div class="weixin-allbtn" data-component="page.userOpt.component.quickLogin"> <!-- 快速登录区域 -->
     <div class="weixin-login" data-node="quickLogin">
-      <!-- <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt=""> -->
-      <span>爱奇艺APP一键登录</span>  
+        <!-- <img class="weixin-img" src="//pic3.iqiyipic.com/lequ/20240202/7a824da0b3984655ab96401e660fbe87.jpg" alt=""> --> <!-- 被注释掉的快速登录图标 -->
+        <span>爱奇艺APP一键登录</span> <!-- 爱奇艺APP一键登录文字 -->
     </div>
-    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div>
-  </div>
+    <div class="weixin-switch-sms-login" data-node="smsBtn">短信验证登录</div> <!-- 短信验证登录切换按钮 -->
 </div>
- 
-      </script>
-    <!-- 页底 -->
+</div>
+</script>
+
+<!-- 页底 -->
 <div class="m-pc-footer" glue-component="page.userOpt.component.footer">
     <a class="c-link c-change" href="javascript:void(0);" style="display:none;">
-        手机号换了
+        手机号换了 <!-- 手机号更换的链接，初始隐藏 -->
     </a>
+
  
 </div>
 <!-- 页底 end -->
-  </div>
-  <div class="m-agreement-model agreement-link" glue-id="protocolModel" style="display:none;" glue-component="page.userOpt.component.protocolModel" glue-show="modelShow" >
+</div>
+
+<div class="m-agreement-model agreement-link" glue-id="protocolModel" style="display:none;" glue-component="page.userOpt.component.protocolModel" glue-show="modelShow">
     <div class="m-am-wrapper">
-      <div class="m-am-content">
-        请阅读并同意1<a class="c-link"
-            data-node="protocol" href="https://www.iqiyi.com/common/loginProtocol.html">《用户协议》2</a>和<a class="c-link"
-            data-node="private" href="https://www.iqiyi.com/common/privateh5.html">《隐私政策》3
-        </a>
-      </div>
-      <div class="m-am-bottom">
-        <div class="m-am-left m-am-btn"  data-node="cancel">取消1</div>
-        <div class="m-am-right m-am-btn" style="display:none;" glue-show="accessSms" data-node="confirm">同意并获取2</div>
-        <div class="m-am-right m-am-btn" style="display:none;" glue-show="common" data-node="confirm">同意并登录3</div>
-      </div>
+        <div class="m-am-content">
+            请阅读并同意1<a class="c-link" data-node="protocol" href="https://www.iqiyi.com/common/loginProtocol.html">《用户协议》2</a>和<a class="c-link" data-node="private" href="https://www.iqiyi.com/common/privateh5.html">《隐私政策》3</a>
+            <!-- 显示用户协议和隐私政策的链接 -->
+        </div>
+        <div class="m-am-bottom">
+            <div class="m-am-left m-am-btn" data-node="cancel">取消1</div> <!-- 取消按钮 -->
+            <div class="m-am-right m-am-btn" style="display:none;" glue-show="accessSms" data-node="confirm">同意并获取2</div> <!-- 同意并获取的按钮，依据条件显示 -->
+            <div class="m-am-right m-am-btn" style="display:none;" glue-show="common" data-node="confirm">同意并登录3</div> <!-- 同意并登录的按钮，依据条件显示 -->
+        </div>
     </div>
 </div>
- 
-    </div>
+
 </div>
-  <div glue-component="page.userOpt.component.tipPanel" glue-id="tipPanel">
-    <div data-node="tipPanel"></div>
-  
+</div>
+
+<div glue-component="page.userOpt.component.tipPanel" glue-id="tipPanel">
+    <div data-node="tipPanel"></div> <!-- 提示面板区域 -->
 </script>
+
 <script glue-node="deviceLockTpl" type="text/tpl">
     <div class="m-pc-cover"></div>
     <section class="m-network-popup m-networkPop-BGWhite">
         <div class="popup-info">
-            <div class="c-title">提示</div>
+            <div class="c-title">提示</div> <!-- 提示标题 -->
             <div class="c-des">
-                <div class="c-info">$!{msg}</div>
+                <div class="c-info">$!{msg}</div> <!-- 显示提示信息 -->
             </div>
         </div>
         <div class="popup-btn">
-            <a href="javascript:void(0)" title="关闭" class="c-btn-link" data-node="close">关闭</a>
-            <a href="javascript:void(0)" title="不重要" class="c-btn-link c-green" data-node="smsLogin">不重要</a>
+            <a href="javascript:void(0)" title="关闭" class="c-btn-link" data-node="close">关闭</a> <!-- 关闭按钮 -->
+            <a href="javascript:void(0)" title="不重要" class="c-btn-link c-green" data-node="smsLogin">不重要</a> <!-- 不重要按钮 -->
         </div>
     </section>
 </script>
@@ -617,26 +694,26 @@ Q.PageInfo.sample = "";;
 <script glue-node="stopWarningTpl" type="text/tpl">
     <div class="m-pc-cover"></div>
     <section class="m-pc-popUp">
-      <p class="title">$!{msg}</p>
-      #if($node)
-        #set($dataNode = $node)
-      #else
-        #set($dataNode = "close")
-      #end
-      <a
-        class="c-btn-block c-btn-base"
-        data-node="$dataNode"
-        #if($rseat) data-rseat="$!{rseat}" #end
-        href="javascript:void(0);"
-      >确定</a>
+        <p class="title">$!{msg}</p> <!-- 显示警告信息 -->
+        #if($node)
+            #set($dataNode = $node)
+        #else
+            #set($dataNode = "close")
+        #end
+        <a
+            class="c-btn-block c-btn-base"
+            data-node="$dataNode"
+            #if($rseat) data-rseat="$!{rseat}" #end
+            href="javascript:void(0);"
+        >确定</a> <!-- 确定按钮 -->
     </section>
 </script>
 
 <script glue-node="warningLoding" type="text/tpl">
     <div class="m-pc-cover"></div>
     <div class="m-pp-loading">
-        <i class="icon-loading"></i>
-        <span class="pp-loading-title" glue-bind="content">$!{msg}</span>
+        <i class="icon-loading"></i> <!-- 加载图标 -->
+        <span class="pp-loading-title" glue-bind="content">$!{msg}</span> <!-- 显示加载信息 -->
     </div>
 
 </script>
@@ -652,65 +729,83 @@ Q.PageInfo.sample = "";;
   </section>
 </script>
 
-<script glue-node="forgetPasswordTpl"  type="text/tpl">
-  <!-- 不重要66 追加类名forgetPass-->
-  <div class="m-pc-cover"></div>
+<script glue-node="forgetPasswordTpl" type="text/tpl">
+  <!-- 不重要66 追加类名forgetPass -->
+  <div class="m-pc-cover"></div> <!-- 遮罩层，用于模糊背景 -->
+
   <section class="m-pc-popUp forgetPass" data-node="forgetPwdPanel">
-    <p class="title" data-node="fpTitle">您忘记密码了吗1</p>
-    <!-- 若无错误信息 则 保留DOM节点 删除文本内容 -->
-    <p class="error-tip" data-node="errormsg">$!{msg}</p>
-    <!-- 若无错误信息 则 保留DOM节点 删除文本内容 end-->
-    <a class="c-btn-block c-btn-base" href="smsLogin" data-rseat="h5frgtpwd_21stp" glue-component="page.userOpt.component.forward">短信登录2</a>
-    <a class="c-btn-block c-btn-base selected" data-rseat="h5frgtpwd_2fndpwd" href="$!{findUrl}">找回密码1</a>
-    <a href="javascript:void(0);" class="c-tips-link" data-node="close">重试1</a>
+    <p class="title" data-node="fpTitle">您忘记密码了吗1</p> <!-- 提示用户忘记密码的标题 -->
+    
+    <!-- 若无错误信息，则保留DOM节点，删除文本内容 -->
+    <p class="error-tip" data-node="errormsg">$!{msg}</p> <!-- 显示错误信息的区域 -->
+    <!-- 若无错误信息，则保留DOM节点，删除文本内容 end -->
+    
+    <a class="c-btn-block c-btn-base" href="smsLogin" data-rseat="h5frgtpwd_21stp" glue-component="page.userOpt.component.forward">短信登录2</a> <!-- 短信登录按钮 -->
+    
+    <a class="c-btn-block c-btn-base selected" data-rseat="h5frgtpwd_2fndpwd" href="$!{findUrl}">找回密码1</a> <!-- 找回密码的按钮，链接到找回密码的页面 -->
+    
+    <a href="javascript:void(0);" class="c-tips-link" data-node="close">重试1</a> <!-- 重试按钮，关闭当前弹窗 -->
   </section>
-  
 </script>
 
+<!-- 加载动画的模板，显示等待提示 -->
 <script glue-node="loading" type="text/tpl">
   <div class="m-pc-resetBg">
     <div class="m-pc-waitWrap">
       <section class="m-pc-wait">
+        <!-- 加载中的图标 -->
         <i class="update-icon"></i>
+        <!-- 加载中的提示文字 -->
         <span class="c-info">请等待...</span>
       </section>
     </div>
   </div>
 </script>
 
-
-      </div>
-  </div>
-</script>
-
-  </section>
-</script>
-
-
-</script>
- 
 </div>
-  <script type="text/javascript" src="//static.iqiyi.com/js/html5/js/lib/lib.2.0.3.min.js?sea1.2.min.js"></script>
- 
-  <script>
-    window.__QOE__ && __QOE__.mark('cooksdkDownloadStart');
+</div>
 </script>
-<script type="text/javascript" src="https://security.iqiyi.com/static/cook/v1/cooksdk.js"></script>
+
+</section>
+</script>
+
+</script>
+
+<!-- 引入外部JavaScript库 -->
+<script type="text/javascript" src="//static.iqiyi.com/js/html5/js/lib/lib.2.0.3.min.js?sea1.2.min.js"></script>
+
 <script>
-    window.__QOE__ && __QOE__.mark('cooksdkDownloadEnd');
-    window.__QOE__ && __QOE__.measure("cooksdkDownload", 'cooksdkDownloadStart', 'cooksdkDownloadEnd', true);
+  <!-- 记录CookSDK下载开始的性能指标 -->
+  window.__QOE__ && __QOE__.mark('cooksdkDownloadStart');
 </script>
-  <section
-    class="m-toast"
-    style="display:none;"
-    glue-component="common.component.tip.toast"
-    glue-show="toastShow"
-    glue-bind-html="toastText"
+
+<!-- CookSDK的脚本文件 -->
+<script type="text/javascript" src="https://security.iqiyi.com/static/cook/v1/cooksdk.js"></script>
+
+<script>
+  <!-- 记录CookSDK下载结束的性能指标 -->
+  window.__QOE__ && __QOE__.mark('cooksdkDownloadEnd');
+  <!-- 测量CookSDK的下载时长 -->
+  window.__QOE__ && __QOE__.measure("cooksdkDownload", 'cooksdkDownloadStart', 'cooksdkDownloadEnd', true);
+</script>
+
+<!-- Toast提示框，默认隐藏，用于显示提示消息 -->
+<section
+  class="m-toast"
+  style="display:none;"
+  glue-component="common.component.tip.toast"
+  glue-show="toastShow"
+  glue-bind-html="toastText"
 >将减少该类推荐</section>
-  <script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
-  <script type="text/javascript">
-    Q.load("phw/js/page/userOpt/8466b85f!app.js");
-  </script>
+
+<!-- 引入iqiyi的JsBridge SDK -->
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+
+<!-- 加载用户操作页面的JavaScript文件 -->
+<script type="text/javascript">
+  Q.load("phw/js/page/userOpt/8466b85f!app.js");
+</script>
+
 </body>
 
 </html>
